@@ -1,49 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 /*
 
- -- Set : small to largest ( small on the top)
-         Piorirty queue al 3aks, large to small 
+1) get length = str.leng();
 
- -- set of pair, based on first 
- -- to use set from large to small --> use greater <  > syntax 
+2) get substr using start index  and length 
+    str.substr(7, 5); // start at index 7, take 5 characters
 
-    set<int, std::greater<int>> s2; 
-    set<pair<int,int>, std::greater<pair<int,int>>> s2; 
+3) conversion between numbers and string 
+
+    ##### string to Number #########
+    sto = String TO 
+    stoi = string to I 
+    stod = string to double 
+
+
+    ##### numbers to string ########
+    string s1 = to_string(n);
+
 */
+
 
 int main() 
 {
-set<int> st;
 
-st.insert(0);
-st.insert(1);
-st.insert(-1);
+    string str ="0123456";
 
-for(auto i : st){
-    cout<<i<<endl;  // -1 0 1 
-}
+    cout<<str.substr(1,2)<<endl; //"12"
 
-//////////////////////////////// exmaple of pair ////////////////////////////////////////////
-
-set<pair<int,int>>s;
-s.insert({-1,10});
-s.insert({10,-1});
-for(auto i : s){
-    cout<<i.first<<" "<<i.second<<endl;;  // {-1 10 }  {10, -1} 
-}
-
-//////////////////////////////// exmaple of large to small  ////////////////////////////////////////////
-
-set<pair<int,int>, std::greater<pair<int,int>>> s2; 
-s2.insert({-1,10});
-s2.insert({10,-1});
-for(auto i : s2){
-    cout<<i.first<<" "<<i.second<<endl;;  // {10 -1}  {-1, 10} 
-}
 
   return 0;
 }
