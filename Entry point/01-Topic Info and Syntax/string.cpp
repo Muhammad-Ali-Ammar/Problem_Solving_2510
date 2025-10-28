@@ -19,6 +19,10 @@ using namespace std;
     ##### numbers to string ########
     string s1 = to_string(n);
 
+4) to check if char is digit or not 
+    isdigit('a'); // false
+    isdigit('1'); // true
+    
 */
 
 
