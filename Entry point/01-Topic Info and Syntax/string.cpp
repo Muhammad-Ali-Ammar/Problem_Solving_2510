@@ -29,9 +29,7 @@ using namespace std;
 int main() 
 {
 
-    string str ="0123456";
-
-    cout<<str.substr(1,2)<<endl; //"12"
+    cout<<isdigit("12");
 
 
   return 0;
