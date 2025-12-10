@@ -3,12 +3,23 @@ using namespace std;
 
 /*
 
-1) get length = str.leng();
+1) to check if alphanumeric characters = A-Z a-z 0-9 
+	isalnum(c1)
 
-2) get substr using start index  and length 
+2) to check if char is digit or not 
+    isdigit('a'); // false
+    isdigit('1'); // true
+	
+	
+3) convert to lower case 
+	tolower(c1)
+	
+4) last indx = s.size()-1;
+
+5) get substr using start index  and length 
     str.substr(7, 5); // start at index 7, take 5 characters
 
-3) conversion between numbers and string 
+6) conversion between numbers and string 
 
     ##### string to Number #########
     sto = String TO 
@@ -19,9 +30,7 @@ using namespace std;
     ##### numbers to string ########
     string s1 = to_string(n);
 
-4) to check if char is digit or not 
-    isdigit('a'); // false
-    isdigit('1'); // true
+
     
 */
 
