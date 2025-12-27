@@ -51,6 +51,7 @@ int calculateDepth_ByNodesNumbers(TreeNode* root){
   return 1+ max(calculateDepth_ByNodesNumbers(root->right), calculateDepth_ByNodesNumbers(root->left));
 }
 
+/************************************************************************************* */
 
 /**
  * traveseInOrder  
@@ -63,6 +64,8 @@ void traveseInOrder(TreeNode* root){
   traveseInOrder(root->right);
 }
 
+/************************************************************************************* */
+
 /**
  * travesePreOrder  
  */
@@ -74,7 +77,7 @@ void travesePreOrder(TreeNode* root){
   travesePreOrder(root->right);
 }
 
-
+/************************************************************************************* */
 /**
  * travesePostOrder  
  */
@@ -88,6 +91,7 @@ void travesePostOrder(TreeNode* root){
 
 }
 
+/************************************************************************************* */
 /**
  * eulerTraverse  
  */
@@ -109,6 +113,7 @@ void eulerTraverse(TreeNode* root){
 
 }
 
+/************************************************************************************* */
 /**
  * eulerTraverseToPrintExprsion 
  */
@@ -130,6 +135,7 @@ void eulerTraverseToPrintExprsion(TreeNode* root){
 
 }
 
+/************************************************************************************* */
 /**
  * traverseBFS  
  */
@@ -158,17 +164,80 @@ void traverseBFS(TreeNode* root){
 
 }
 
+/************************************************************************************* */
+/**
+ * get Last Node Using   
+ */
+int lastNodeNas= INT_MIN;
+void getLastNodeUsingDFS(TreeNode* root){
+  static int curLevel = -1;
+  static int maxLevel = -1; 
+
+  if(root == nullptr) return ;  // enpy Tree ... 
+
+
+  if(root->left==nullptr && root->right==nullptr){ // do leaf
+    curLevel++;
+    if(curLevel>=maxLevel){
+      maxLevel = curLevel;
+      lastNodeNas = root->val;
+    }
+    return ;
+  }
+
+    // process 1 
+    curLevel++;
+    if(curLevel>=maxLevel){
+      maxLevel = curLevel;
+      lastNodeNas = root->val;
+    }
+    //go left 
+    getLastNodeUsingDFS(root->left);
+    // process 2 
+    curLevel--;
+    // go right 
+     getLastNodeUsingDFS(root->right);
+    // process 3
+    curLevel--;
+
+}
+
+/************************************************************************************* */
+/**
+ * get Last Node Using   bfs
+ */
+int getLastNodeUsingBFS(TreeNode* root){
+
+  int ans = INT_MIN;
+  if(!root) return ans;
+  deque<TreeNode*> dq;
+  dq.push_back(root);
+
+  while(dq.empty() == false){
+
+    int n = dq.size();
+    ans = dq.back()->val;
+    for(int i = 0; i<n; ++i){
+      
+      if(dq.front()->left) dq.push_back(dq.front()->left);
+      if(dq.front()->right) dq.push_back(dq.front()->right);
+      dq.pop_front();
+    }
+  }
+  return ans;
+}
+
 
 /*******************************************************************************/
 
 int main() {
-  org_root = addBinaryTreeNode(new TreeNode('*'));
-  org_root = addBinaryTreeNode(new TreeNode('a'));
-  org_root = addBinaryTreeNode(new TreeNode('b'));
+  org_root = addBinaryTreeNode(new TreeNode(1));
+  org_root = addBinaryTreeNode(new TreeNode(2));
+  org_root = addBinaryTreeNode(new TreeNode(3));
+  org_root = addBinaryTreeNode(new TreeNode(4));
+  org_root = addBinaryTreeNode(new TreeNode(5));
 
-  org_root = addBinaryTreeNode(nullptr);
-  org_root = addBinaryTreeNode(nullptr);
 
-  eulerTraverseToPrintExprsion(org_root);
+  cout<<getLastNodeUsingBFS(org_root)<<endl;
   return 0;
 }
