@@ -227,17 +227,36 @@ int getLastNodeUsingBFS(TreeNode* root){
   return ans;
 }
 
+/************************************************************************************* */
+/**
+ * calculate the decendants of each node 
+ */
+int printDecendantsofEachNode(TreeNode* root){
 
+  if(!root) return 0;
+  if(root->left == nullptr && root->right == nullptr){
+    cout<<"The decendants of "<<root->val <<" is zero" <<endl;
+    return 1; 
+  }
+
+  int numberOfDecends = printDecendantsofEachNode(root->left) + printDecendantsofEachNode(root->right);
+  cout<<"The decendants of "<<root->val <<" is " <<numberOfDecends<<endl;
+  return numberOfDecends + 1;
+
+}
 /*******************************************************************************/
 
 int main() {
-  org_root = addBinaryTreeNode(new TreeNode(1));
-  org_root = addBinaryTreeNode(new TreeNode(2));
-  org_root = addBinaryTreeNode(new TreeNode(3));
-  org_root = addBinaryTreeNode(new TreeNode(4));
-  org_root = addBinaryTreeNode(new TreeNode(5));
+  org_root = addBinaryTreeNode(new TreeNode('a'));
+  org_root = addBinaryTreeNode(new TreeNode('b'));
+  org_root = addBinaryTreeNode(new TreeNode('c'));
+  org_root = addBinaryTreeNode(new TreeNode('d'));
+  org_root = addBinaryTreeNode(nullptr);
+  org_root = addBinaryTreeNode(new TreeNode('f'));
+  org_root = addBinaryTreeNode(new TreeNode('g'));
 
 
-  cout<<getLastNodeUsingBFS(org_root)<<endl;
+  printDecendantsofEachNode(org_root);
+
   return 0;
 }
