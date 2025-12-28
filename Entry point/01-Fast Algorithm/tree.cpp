@@ -244,19 +244,64 @@ int printDecendantsofEachNode(TreeNode* root){
   return numberOfDecends + 1;
 
 }
+
+/************************************************************************************* */
+/************************************************************************************* */
+/******************************** BST Part******************************************** */
+/************************************************************************************* */
+/************************************************************************************* */
+/************************************************************************************* */
+
+/************************************************************************************* */
+/**
+ * get min of BST
+ */
+
+int getMinOfBst(TreeNode* root){
+
+  if(!root) return INT_MAX;
+  if(root->left == nullptr ){
+    return root->val;
+  }
+
+  return getMinOfBst(root->left);
+
+}
+
+/************************************************************************************* */
+/**
+ * isBST
+ */
+
+ // min, max
+pair<int,int> isBST(TreeNode* root, bool& ans){
+
+  if(!root) return {INT_MAX, INT_MAX};
+  if(root->left == nullptr && root->right == nullptr ){
+    return {root->val, root->val};
+  }
+
+  auto leftValues = isBST(root->left, ans);
+  auto rightValues = isBST(root->right, ans);
+
+  ans &= (root->val >= leftValues.second && root->val<rightValues.first);
+  return {leftValues.first, rightValues.second};
+
+}
 /*******************************************************************************/
 
 int main() {
-  org_root = addBinaryTreeNode(new TreeNode('a'));
-  org_root = addBinaryTreeNode(new TreeNode('b'));
-  org_root = addBinaryTreeNode(new TreeNode('c'));
-  org_root = addBinaryTreeNode(new TreeNode('d'));
-  org_root = addBinaryTreeNode(nullptr);
-  org_root = addBinaryTreeNode(new TreeNode('f'));
-  org_root = addBinaryTreeNode(new TreeNode('g'));
+  org_root = addBinaryTreeNode(new TreeNode(50));
+  org_root = addBinaryTreeNode(new TreeNode(40));
+  org_root = addBinaryTreeNode(new TreeNode(60));
+  org_root = addBinaryTreeNode(new TreeNode(30));
+  org_root = addBinaryTreeNode(new TreeNode(45));
+  org_root = addBinaryTreeNode(new TreeNode(41));
 
+  bool ans = true; 
+  isBST(org_root, ans);
 
-  printDecendantsofEachNode(org_root);
+  cout<<ans<<endl;
 
   return 0;
 }
