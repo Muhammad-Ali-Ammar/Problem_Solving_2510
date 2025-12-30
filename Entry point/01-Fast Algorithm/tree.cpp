@@ -38,6 +38,19 @@ TreeNode* addBinaryTreeNode(TreeNode* newNode) {
   return org_root;
 }
 
+/**
+ * isSameTree 
+ */
+ bool isSameTree(TreeNode* p, TreeNode* q) {
+     
+     if(p == nullptr && q == nullptr) return true;
+     if(p == nullptr || q == nullptr ) return false;
+     if(p->val != q->val) return false;  // process 1 
+     bool okLeft = isSameTree(p->left, q->left);
+     bool okRight = isSameTree(p->right, q->right);
+     return okLeft & okRight;
+ }
+
 /************************************************************************************* */
 
 /**
@@ -242,6 +255,37 @@ int printDecendantsofEachNode(TreeNode* root){
   int numberOfDecends = printDecendantsofEachNode(root->left) + printDecendantsofEachNode(root->right);
   cout<<"The decendants of "<<root->val <<" is " <<numberOfDecends<<endl;
   return numberOfDecends + 1;
+
+}
+
+
+TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
+    
+  unordered_map <int,TreeNode*> mp;
+  map <int,bool> check;
+
+  for(auto v : descriptions){
+
+    TreeNode* parent = mp.count(v[0])? mp[v[0]] : new TreeNode(v[0]);
+    mp[v[0]] = parent;
+
+     TreeNode* child = mp.count(v[1])? mp[v[1]] : new TreeNode(v[1]);
+    mp[v[1]] = child;
+    check[v[1]] = true;
+
+    if(v[2]) parent->left = child;
+    else parent->right = child;
+       
+  }
+  int ans = 0;
+  for(auto v : descriptions){
+    if(check.count(v[0])) {
+      ans = v[0];
+      break;
+    }
+  }
+
+  return mp[ans];
 
 }
 
