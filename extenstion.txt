@@ -1,0 +1,12 @@
+divyanshuagrawal.competitive-programming-helper
+formulahendry.code-runner
+franneck94.c-cpp-runner
+ms-vscode.cmake-tools
+ms-vscode.cpptools
+ms-vscode.cpptools-extension-pack
+ms-vscode.cpptools-themes
+tchojnacki.cpp-compile
+twxs.cmake
+usernamehw.errorlens
+vadimcn.vscode-lldb
+xaver.clang-format
