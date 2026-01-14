@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Z0050FZD/Desktop/finalNotes/Problem Solving",
-      "program": "c:/Users/Z0050FZD/Desktop/finalNotes/Problem Solving/build/Debug/outDebug",
+      "cwd": "d:/E)Code_Workspace/Problem_Solving_2510/Entry point/01-Fast Algorithm",
+      "program": "d:/E)Code_Workspace/Problem_Solving_2510/Entry point/01-Fast Algorithm/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
