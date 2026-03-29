@@ -38,7 +38,7 @@ using namespace std;
 int main() 
 {
 
-    cout<<isdigit("12");
+    cout<<isdigit('1');
 
 
   return 0;
